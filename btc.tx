@@ -1,0 +1,9 @@
+action "my_script" "btc::encode" {
+    opcodes = [
+        btc::op_push(1), // => 0x0101
+        btc::op_pop(),
+        btc::op_cat()
+    ]
+}
+
+// txtx run btc.tx | btcdeb

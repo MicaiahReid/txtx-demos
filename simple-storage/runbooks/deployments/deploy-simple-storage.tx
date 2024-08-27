@@ -1,0 +1,19 @@
+runtime "batch" {
+    inputs = [
+        { evm_defaults: evm::chain("sepolia") },
+        { evm_defaults: evm::chain("arbitrum-sepolia") }
+    ]
+}
+
+wallet "deployer" "evm::mnemonic" {
+    mnemonic = env.MNEMONIC
+}
+
+action "deploy_simple_storage" "evm::deploy_contract_create2" {
+    contract = evm::get_contract_from_foundry_project(env.FOUNDRY_TOML_PATH, "SimpleStorage")
+    signer = wallet.deployer
+    expected_contract_address = env.EXPECTED_ADDRESS
+    salt = env.SALT
+    chain_id = env.evm_defaults.chain_id
+    rpc_api_url = env.evm_defaults.rpc_api_url
+}

@@ -1,0 +1,16 @@
+---
+name: Txtx Demo
+id: txtx-demo
+runbooks:
+  - name: Deploy Simple Storage
+    id: deploy-simple-storage
+    description: Deploys the SimpleStorage contract using the Create2 Opcode
+    location: runbooks/deployments/deploy-simple-storage.tx
+    state:
+      file: simple-storage.tx-state.json
+environments:
+  devnet:
+    MNEMONIC: "model elbow sunny fashion orient nominee symbol odor joy clown range lake"
+    EXPECTED_ADDRESS: "0x4F5bc8695230c056b79daF203cFA829914F98496"
+    SALT: "0x0000000000000000000000000000000000000000d3af2663da51c10215000014"
+    FOUNDRY_TOML_PATH: "/Users/micaiahreid/work/txtx-demos/simple-storage/foundry.toml"

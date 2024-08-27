@@ -1,0 +1,23 @@
+---
+name: fibonacci
+id: fibonacci
+runbooks:
+  - name: prover
+    id: prover
+    description: Generate Fibonacci Proof
+    location: runbooks/usage/prover
+    # state:
+    #   file: prover.tx-state.json
+environments:
+  devnet:
+    mnemonic: "model elbow sunny fashion orient nominee symbol odor joy clown range lake"
+    fibonacci_salt: "0x0000000000000000000000000000000000000000d3af2663da51c1021500000a"
+    sp1_verifier_address:      "0x3B6041173B80E77f038f3F2C0f9744f04837185e"
+    verifier_contract_address: "0x07637F111806E1aE4dC9f8BEd31a7d974D46E9B7"
+    # testnet rpcs
+    SEPOLIA_RPC_URL: "https://sepolia.infura.io/v3/14e311a57f994d89a83883926cf95c7c"
+    ARBITRUM_SEPOLIA_RPC_URL: "https://arbitrum-sepolia.infura.io/v3/14e311a57f994d89a83883926cf95c7c"
+    # sp1 api keys
+    sp1_private_key: "0xbf23a0fcd770b43d4925c9848a7128d177df9b2c67808a31260d763c27150000"
+  testnet:
+  mainnet:

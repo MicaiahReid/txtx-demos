@@ -1,0 +1,23 @@
+---
+name: Stacks Multisig
+id: stacks-multisig
+runbooks:
+- name: multisig
+  id: multisig
+  description: Register a BNS name using a multisig wallet
+  location: "./runbooks/multisig"
+- name: singlesig
+  id: singlesig
+  description: Register a BNS name using a singlesig wallet
+  location: "./runbooks/singlesig"
+- name: namespace-register
+  id: namespace-register
+  description: Register a BNS namespace
+  location: "./runbooks/namespace-register"
+environments:
+  devnet:
+    stacks_network_id: testnet
+    stacks_api_url: http://localhost:3999
+  # testnet:
+  #   stacks_network_id: testnet
+  #   stacks_api_url: https://api.testnet.hiro.so
