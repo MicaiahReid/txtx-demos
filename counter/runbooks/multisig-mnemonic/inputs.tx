@@ -1,36 +1,40 @@
-wallet "alice" "stacks::mnemonic" {
+signer "alice" "stacks::mnemonic" {
   // expected_address = "ST2JHG361ZXG51QTKY2NQCVBPPRRE2KZB1HR05NNC"
   mnemonic = "cycle puppy glare enroll cost improve round trend wrist mushroom scorpion tower claim oppose clever elephant dinosaur eight problem before frozen dune wagon high"
   // 02c4b5eacb71a27be633ed970dcbc41c00440364bc04ba38ae4683ac24e708bf33
 }
 
-wallet "bob" "stacks::mnemonic" {
+signer "bob" "stacks::mnemonic" {
   // expected_address = "ST2NEB84ASENDXKYGJPQW86YXQCEFEX2ZQPG87ND"
   mneomnic = "board list obtain sugar hour worth raven scout denial thunder horse logic fury scorpion fold genuine phrase wealth news aim below celery when cabin"
   // 03b3e0a76b292b2c83fc0ac14ae6160d0438ebe94e14bbb5b7755153628886e08e
 }
-wallet "alice_and_bob" "stacks::multisig" {
+signer "alice_and_bob" "stacks::multisig" {
   //expected_address = SN2QE43MMXFDMAT3TPRGQ38BQ50VSRMBRQ6B16W5J
-  signers = [wallet.alice, wallet.bob]
+  signers = [signer.alice, signer.bob]
   // required_signatures = 1
 }
 
-input "namespace" {
+var "namespace" {
   description = "TLD / Namespace"
-  default = "btc"
+  editable = true
+  value = "btc"
 }
 
-input "name" {
+var "name" {
   description = "Domain name to order"
-  default = "micaiah"
+  editable = true
+  value = "micaiah"
 }
 
-input "salt" {
+var "salt" {
   description = "Random salt to use for preventing front-running"
-  default = "00000000000000"
+  editable = true
+  value = "00000000000000"
 }
 
-input "zonefile" {
+var "zonefile" {
   description = "Zonefile to attach to the new domain"
-  default = "0000000000"
+  editable = true
+  value = "0000000000"
 }

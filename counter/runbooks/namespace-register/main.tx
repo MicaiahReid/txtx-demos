@@ -17,8 +17,8 @@ runtime "stacks::defaults" {
 //       stacks::cv_buff(
 //         ripemd160(sha256(
 //           [
-//             encode_hex(input.namespace),
-//             encode_hex(input.salt)
+//             encode_hex(var.namespace),
+//             encode_hex(var.salt)
 //           ]
 //         ))
 //       ),
@@ -26,7 +26,7 @@ runtime "stacks::defaults" {
 //   ]
 // }
 
-action "send_namespace_preorder" "stacks::send_contract_call" {
+action "send_namespace_preorder" "stacks::call_contract" {
   description = "Send Namespace Preorder transaction"
   contract_id = "ST000000000000000000002AMW42H.bns"
   function_name = "namespace-preorder"
@@ -34,25 +34,25 @@ action "send_namespace_preorder" "stacks::send_contract_call" {
       stacks::cv_buff(
         ripemd160(sha256(
           [
-            encode_hex(input.namespace),
-            encode_hex(input.salt)
+            encode_hex(var.namespace),
+            encode_hex(var.salt)
           ]
         ))
       ),
       stacks::cv_uint(64000000000), 
   ]
-  signer = wallet.alice
+  signer = signer.alice
   confirmations = 1
   post_conditions = [stacks::revert_if_account_not_sending_at_least("signer", 0)]
 }
 
-// action "send_namespace_reveal" "stacks::send_contract_call" {
-//   description = "Send Namespace Reveal ${input.namespace} transaction"
+// action "send_namespace_reveal" "stacks::call_contract" {
+//   description = "Send Namespace Reveal ${var.namespace} transaction"
 //   contract_id = "ST000000000000000000002AMW42H.bns"
 //   function_name = "namespace-reveal"
 //   function_args = [
-//       stacks::cv_buff(encode_hex(input.namespace)),
-//       stacks::cv_buff(encode_hex(input.salt)),
+//       stacks::cv_buff(encode_hex(var.namespace)),
+//       stacks::cv_buff(encode_hex(var.salt)),
 //       stacks::cv_uint(1),
 //       stacks::cv_uint(1),
 //       stacks::cv_uint(1),
@@ -76,20 +76,20 @@ action "send_namespace_preorder" "stacks::send_contract_call" {
 //       stacks::cv_uint(10000),
 //       stacks::cv_principal("ST2JHG361ZXG51QTKY2NQCVBPPRRE2KZB1HR05NNC")
 //   ]
-//   signer = wallet.alice
+//   signer = signer.alice
 //   confirmations = 1
 //   depends_on = [action.send_namespace_preorder.tx_id]
 //   post_conditions = [stacks::revert_if_account_not_sending_at_least("signer", 0)]
 // }
 
-// action "send_namespace_ready" "stacks::send_contract_call" {
-//   description = "Send Namespace Ready ${input.namespace} transaction"
+// action "send_namespace_ready" "stacks::call_contract" {
+//   description = "Send Namespace Ready ${var.namespace} transaction"
 //   contract_id = "ST000000000000000000002AMW42H.bns"
 //   function_name = "namespace-ready"
 //   function_args = [
-//       stacks::cv_buff(encode_hex(input.namespace))
+//       stacks::cv_buff(encode_hex(var.namespace))
 //   ]
-//   signer = wallet.alice
+//   signer = signer.alice
 //   confirmations = 1
 //   depends_on = [action.send_namespace_reveal.tx_id]
 //   post_conditions = [stacks::revert_if_account_not_sending_at_least("signer", 0)]

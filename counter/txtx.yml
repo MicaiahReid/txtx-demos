@@ -4,11 +4,11 @@ id: stacks-multisig
 runbooks:
 - name: multisig
   id: multisig
-  description: Register a BNS name using a multisig wallet
+  description: Register a BNS name using a multisig signer
   location: "./runbooks/multisig"
 - name: singlesig
   id: singlesig
-  description: Register a BNS name using a singlesig wallet
+  description: Register a BNS name using a singlesig signer
   location: "./runbooks/singlesig"
 - name: namespace-register
   id: namespace-register

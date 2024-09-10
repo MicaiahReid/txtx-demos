@@ -14,6 +14,24 @@ plan:
             mstx-amount: 1000000000
             memo: '0x01'
             cost: 10000
+        - stx-transfer:
+            expected-sender: ST2JHG361ZXG51QTKY2NQCVBPPRRE2KZB1HR05NNC
+            recipient: SN1WR2392XQ2VTZZMRTYZAT66FZ93KSZMXB51ST8Q
+            mstx-amount: 1000000000
+            memo: '0x01'
+            cost: 10000
+        - stx-transfer:
+            expected-sender: ST2JHG361ZXG51QTKY2NQCVBPPRRE2KZB1HR05NNC
+            recipient: SN2F3W245K5M4HWFNXQZZPPGFYJ9ZEWKK3V2KMVQ6
+            mstx-amount: 1000000000
+            memo: '0x01'
+            cost: 10000
+        - stx-transfer:
+            expected-sender: ST2JHG361ZXG51QTKY2NQCVBPPRRE2KZB1HR05NNC
+            recipient: SN1DYNVH4N4AGGZZYS4GWFW8S921A5F7MHW7GRHFP
+            mstx-amount: 1000000000
+            memo: '0x01'
+            cost: 10000
     - id: 0
       transactions:
         - stx-transfer:

@@ -8,43 +8,43 @@ action "get_name_price" "stacks::call_readonly_fn" {
   contract_id = "ST000000000000000000002AMW42H.bns"
   function_name = "get-name-price"
   function_args = [
-      stacks::cv_buff(encode_hex(input.namespace)),
-      stacks::cv_buff(encode_hex(input.name))
+      stacks::cv_buff(encode_hex(var.namespace)),
+      stacks::cv_buff(encode_hex(var.name))
   ]
   sender = "ST2JHG361ZXG51QTKY2NQCVBPPRRE2KZB1HR05NNC"
 }
 
-action "send_name_preorder" "stacks::send_contract_call" {
-  description = "Send Preorder ${input.name}.${input.namespace} transaction"
+action "send_name_preorder" "stacks::call_contract" {
+  description = "Send Preorder ${var.name}.${var.namespace} transaction"
   contract_id = "ST000000000000000000002AMW42H.bns"
   function_name = "name-preorder"
   function_args = [
       stacks::cv_buff(
         ripemd160(sha256(
           [
-            encode_hex("${input.name}.${input.namespace}"),
-            encode_hex(input.salt)
+            encode_hex("${var.name}.${var.namespace}"),
+            encode_hex(var.salt)
           ]
         ))
       ),
       stacks::cv_uint(action.get_name_price.value), 
   ]
-  signer = wallet.alice_and_bob
+  signer = signer.alice_and_bob
   confirmations = 1
   post_conditions = [stacks::revert_if_account_not_sending_at_least("SN2QE43MMXFDMAT3TPRGQ38BQ50VSRMBRQ6B16W5J", 1)]
 }
 
-action "send_name_register" "stacks::send_contract_call" {
+action "send_name_register" "stacks::call_contract" {
   description = "Register name"
   contract_id = "ST000000000000000000002AMW42H.bns"
   function_name = "name-register"
   function_args = [
-      stacks::cv_buff(encode_hex(input.namespace)),
-      stacks::cv_buff(encode_hex(input.name)),
-      stacks::cv_buff(encode_hex(input.salt)),
-      stacks::cv_buff(encode_hex(input.zonefile)),
+      stacks::cv_buff(encode_hex(var.namespace)),
+      stacks::cv_buff(encode_hex(var.name)),
+      stacks::cv_buff(encode_hex(var.salt)),
+      stacks::cv_buff(encode_hex(var.zonefile)),
   ]
-  signer = wallet.alice_and_bob
+  signer = signer.alice_and_bob
   confirmations = 1
   depends_on = [action.send_name_preorder.tx_id]
   post_conditions = [stacks::revert_if_account_not_sending_at_least("SN2QE43MMXFDMAT3TPRGQ38BQ50VSRMBRQ6B16W5J", 1)]
