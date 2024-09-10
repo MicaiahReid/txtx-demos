@@ -1,9 +1,16 @@
-action "my_script" "btc::encode" {
-    opcodes = [
-        btc::op_push(1), // => 0x0101
-        btc::op_pop(),
-        btc::op_cat()
+runtime "addon::bitcoin" {
+}
+
+action "my_script" "bitcoin::encode_script" {
+    instructions = [
+        bitcoin::op_dup(),
+        bitcoin::op_hash160(),
+        bitcoin::op_pushdata(20, "55ae51684c43435da751ac8d2173b2652eb64105"),
+        bitcoin::op_equalverify(),
+        bitcoin::op_checksig(),
     ]
 }
 
-// txtx run btc.tx | btcdeb
+output "p2pkh" {
+    value = action.my_script
+}
