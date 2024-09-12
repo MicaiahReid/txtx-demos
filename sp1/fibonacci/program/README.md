@@ -66,8 +66,8 @@ To get started, copy the example environment file:
 cp .env.example .env
 ```
 
-Then, set the `SP1_PROVER` environment variable to `network` and set the `SP1_PRIVATE_KEY`
-environment variable to your whitelisted private key.
+Then, set the `SP1_PROVER` environment variableiable to `network` and set the `SP1_PRIVATE_KEY`
+environment variableiable to your whitelisted private key.
 
 For example, to generate an EVM-compatible proof using the prover network, run the following
 command:
