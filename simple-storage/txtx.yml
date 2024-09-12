@@ -7,10 +7,15 @@ runbooks:
     description: Deploys the SimpleStorage contract using the Create2 Opcode
     location: runbooks/deployments/deploy-simple-storage.tx
     state:
-      file: simple-storage.tx-state.json
+      location: state
 environments:
   devnet:
     MNEMONIC: "model elbow sunny fashion orient nominee symbol odor joy clown range lake"
     EXPECTED_ADDRESS: "0x62179a78E3Cd5f634e716f94BB8Db8faadAa1DFe"
     SALT: "0x0000000000000000000000000000000000000000d3af2663da51c10215000015"
-    FOUNDRY_TOML_PATH: "/Users/micaiahreid/work/txtx-demos/simple-storage/foundry.toml"
+    FOUNDRY_TOML_PATH: "foundry.toml"
+  testnet:
+    MNEMONIC: "model elbow sunny fashion orient nominee symbol odor joy clown range lake"
+    EXPECTED_ADDRESS: "0xE644D3f6576e99675078FB3Fcb56aF0a53f91957"
+    SALT: "0x0000000000000000000000000000000000000000d3af2663da51c10215000016"
+    FOUNDRY_TOML_PATH: "foundry.toml"
